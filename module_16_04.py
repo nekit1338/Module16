@@ -23,9 +23,14 @@ async def create_user(
         username: str,
         age: int
 ) -> User:
-    new_user = User(id=len(users) + 1, username=username, age=age)
-    users.append(new_user)
-    return new_user
+    if len(users) == 0:
+        new_user = User(id=1, username=username, age=age)
+        users.append(new_user)
+        return new_user
+    if len(users) >= 1:
+        new_user = User(id=users[-1].id + 1, username=username, age=age)
+        users.append(new_user)
+        return new_user
 
 
 @app_01.put('/user/{user_id}/{username}/{age}')
