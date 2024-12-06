@@ -28,7 +28,6 @@ async def get_users(request: Request, user_id: int):
             {"request": request, "user": user})
     else:
         raise HTTPException(status_code=404, detail="Пользователь не найден")
-    #  return templates.TemplateResponse("users.html", {"request": request, "user": users[user_id - 1]})
 
 
 @app_01.post('/user/{username}/{age}')
